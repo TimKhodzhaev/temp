@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:antibiotikerkarte"
+             x:Class="antibiotikerkarte.MainPage"
+             BackgroundColor="#FFF'>" >
+
+
+    <ContentPage.BindingContext>
+        <local:MainViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <ListView ItemsSource="{Binding Infections}"
+              HasUnevenRows="True"
+              Margin="0, 0"
+              ItemTapped="ListView_ItemTapped"
+              BackgroundColor="#F7F7F7"
+              >
+        <ListView.Header>
+            <StackLayout Padding="10,5,0,5" BackgroundColor="#0065BD">
+                <Label Text="PedAb"
+                       FontSize="Large"
+                       TextColor="#F7F7F7"
+                       />
+                <Label Text="Ist wirklich ein Antibiotikum nötig? Gibt es Allergien oder Anzeichen einer Niereninsuffizienz? Immer VORHER mikrobiologische Diagnostik abnehmen!"
+                       FontSize="Medium"
+                       TextColor="#F7F7F7"
+                       />
+                <Label Text="Tägliche Evaluation der Therapie im Hinblick auf mögliche(s) 1. Absetzen 2. Oralisierung 3. Eskalation / Deeskalation 4. Festlegung der Therapiedauer 5. Korrekte Dosierung"
+                       FontSize="Medium"
+                       TextColor="#F7F7F7"
+                       />
+                <Label Text="Infektionen:"
+                       FontSize="Large"
+                       TextColor="#F7F7F7"
+                       />
+            </StackLayout>
+        </ListView.Header>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout
+                        Padding="10,10,10,10"
+                        >
+                        <Label Text="{Binding InfectionName}"
+                               FontSize="Large"
+                               TextColor="#0065BD"
+                               />
+
+                        <Label Text="{Binding Meds}"
+                               IsVisible="{Binding IsVisible}"
+                               TextColor="#DA8D3D"
+                               FontSize="Medium"
+                               />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.Footer>
+            <StackLayout Padding="10,5,0,5" BackgroundColor="#0065BD">
+
+                        <Label Text="Stand 24.5.2018. Impressum: Angaben gemäß § 5 TMG: Technische Universität München, Fakultät für Informatik, Lehrstuhl für Wirtschaftsinformatik (I17), Boltzmannstr. 3, 85748 Garching b. München, Germany, Vertreten durch: Prof. Dr. Helmut Krcmar, Kontakt: Telefon: +49 (0)89 289 – 19532, Fax: +49 (0)89 289 – 19533, E-Mail: Krcmar@in.tum.de, Quelle: http://www.e-recht24.de"
+                       FontSize="Micro"
+                       TextColor="#F7F7F7"
+                       />
+            </StackLayout>
+        </ListView.Footer>
+    </ListView>
+
+</ContentPage>
